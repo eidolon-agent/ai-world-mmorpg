@@ -189,6 +189,7 @@ class GameScene extends Phaser.Scene {
     // Auto-detect: try Vercel's deployed URL first, fallback to local
     var wsProto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     var wsUrl = wsProto + '//' + window.location.host;
+    console.log('[WS] connecting to', wsUrl);
 
     try {
       this.ws = new WebSocket(wsUrl);

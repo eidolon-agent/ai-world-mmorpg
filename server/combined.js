@@ -227,7 +227,18 @@ function gameLoop() {
 }
 
 // ─── HTTP Server (serve frontend) ──────────────────────
-const frontendBase = path.join(__dirname, '..');
+const baseDir = __dirname;
+// Find project root: try 3 levels up for Railway, fallback to parent
+const projectRoot = (() => {
+  if (process.env.NODE_ENV === 'production') {
+    // Railway deploys to /app, server/combined.js is at /app/server/combined.js
+    // But also check if we're directly at /app
+    if (fs.existsSync('/app/index.html')) return '/app';
+    return path.join(baseDir, '..');
+  }
+  return path.join(baseDir, '..');
+})();
+const frontendBase = path.resolve(projectRoot);
 
 function findMimeType(fp) {
   const ext = path.extname(fp).toLowerCase();
