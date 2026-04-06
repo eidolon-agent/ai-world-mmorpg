@@ -1,0 +1,15 @@
+{
+  "name": "mmorpg-farcaster-mini2",
+  "version": "2.0.0",
+  "description": "AI World - Farcaster MMORPG Miniapp with AI Agents",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "serve": "npx -y serve . -l 3000"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  },
+  "keywords": ["farcaster", "miniapp", "mmorpg", "phaser", "ai-agents"]
+}
